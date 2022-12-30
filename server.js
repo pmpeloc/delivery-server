@@ -3,6 +3,8 @@ const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
 
+const usersRoutes = require('./routes/usersRoutes');
+
 const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
@@ -15,6 +17,8 @@ app.use(cors());
 app.disable('x-powered-by');
 
 app.set('port', port);
+
+usersRoutes(app);
 
 server.listen(port, '192.168.100.83' || 'localhost', () => {
   console.log(`Server NodeJS with process id: ${process.pid} running...`);
