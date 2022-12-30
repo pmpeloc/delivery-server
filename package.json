@@ -4,7 +4,8 @@
   "description": "Backend for App Delivery",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start:dev": "nodemon server",
+    "start:prod": "node server"
   },
   "keywords": [
     "react native",
