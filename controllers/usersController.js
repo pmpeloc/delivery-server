@@ -41,7 +41,7 @@ module.exports = {
         });
       } else {
         return res.status(401).json({
-          success: true,
+          success: false,
           message: 'El password es incorrecto',
         });
       }
