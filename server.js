@@ -3,6 +3,7 @@ const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
+const multer = require('multer');
 
 const usersRoutes = require('./routes/usersRoutes');
 
@@ -23,10 +24,14 @@ app.disable('x-powered-by');
 
 app.set('port', port);
 
-usersRoutes(app);
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
+
+usersRoutes(app, upload);
 
 server.listen(port, '192.168.100.83' || 'localhost', () => {
-  console.log(`Server NodeJS with process id: ${process.pid} running...`);
+  console.log(`Server with process id: ${process.pid} running...`);
 });
 
 app.get('/', (req, res) => {
