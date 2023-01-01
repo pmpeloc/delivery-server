@@ -91,7 +91,7 @@ module.exports = {
         Keys.secretOrKey,
         {}
       );
-      user.session_token = token;
+      user.session_token = `JWT ${token}`;
       return res.status(201).json({
         success: true,
         message: 'El registro se realizó correctamente',
