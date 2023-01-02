@@ -25,7 +25,7 @@ module.exports = {
       }
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
-        const { id, name, lastname, email, phone, image } = user;
+        const { id, name, lastname, email, phone, image, roles } = user;
         const token = jwt.sign({ id, email }, Keys.secretOrKey, {});
         const data = {
           id,
@@ -35,6 +35,7 @@ module.exports = {
           phone,
           image,
           session_token: `JWT ${token}`,
+          roles,
         };
         return res.status(201).json({
           success: true,
